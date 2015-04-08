@@ -1,0 +1,19 @@
+
+<div class="reportSection">
+  <h4>Tradeoffs</h4>
+
+	<select class="chosen">
+		<label for="default-chosen-selection">Select a Set of Tradeoff Scores to View:</label></br>
+		<option class="default-chosen-selection"></option>
+		{{#tradeoffs}}
+			<option value="{{.}}">{{.}}</option>
+		{{/tradeoffs}}
+	</select>
+     <p class="small ttip-tip">
+	   Tip: hover over a proposal to see details
+	</p>
+  	<div id="pvt_container" class="pvt_container"><div  id="pres-v-tourism" class="pres-v-tourism"></div></div>
+  	<div id="pve_container" class="pve_container"><div  id="pres-v-extractive" class="pres-v-extractive"></div></div>
+  	<div id="tve_container" class="tve_container"><div  id="tourism-v-extractive" class="tourism-v-extractive"></div></div>
+
+</div>
