@@ -16,7 +16,7 @@ class TradeoffsTab extends ReportTab
 
   render: () ->
     tradeoff_data = @recordSet('GalapagosTradeoffAnalysis', 'Scores').toArray()
-    tradeoffs = ['','Preservation and Tourism', 'Preservation and Extractive', 'Tourism and Extractive']
+    tradeoffs = ['Preservation and Tourism', 'Preservation and Extractive', 'Tourism and Extractive']
     console.log("data: ", tradeoff_data)
     context =
       sketch: @model.forTemplate()
@@ -78,7 +78,6 @@ class TradeoffsTab extends ReportTab
 
   renderTradeoffs: () =>
     name = @$('.chosen').val()
-    @$('.default-chosen-selection').hide()
     if name == "Preservation and Tourism"
       @$('.pvt_container').show()
       @$('.pve_container').hide()
