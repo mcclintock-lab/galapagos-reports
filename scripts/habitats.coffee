@@ -67,7 +67,6 @@ class HabitatsTab extends ReportTab
   sortProposalValues: (proposal_values, type) =>
     results = []
     for pv in proposal_values
-      console.log("pv is ", pv.ZONE_TYPE)
       if pv.ZONE_TYPE == type
         results.push(pv)
     return results

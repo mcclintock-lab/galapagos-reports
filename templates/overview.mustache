@@ -1,4 +1,33 @@
-<div class="reportSection">
-  <h4>Size</h4>
-  <p class="large">The selected sketch is <strong>{{size_km}} square kilometers</strong>.</p>
-</div>
+{{#isCollection}}
+<div class="reportSection tableContainer">
+    <h4>Size (in square kilometers)</h4>
+    <table>
+      <thead>
+        <tr>
+          <th>Zone Type</th>
+          <th>Total Area</th>
+          <th>Mean Area</th>
+          <th>Min. Area</th>
+          <th>Max. Area</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#size_stats}}
+          <tr>
+            <td>{{ZONE_TYPE}}</td>
+            <td>{{TOTAL}}</td>
+            <td>{{MEAN}}</td>
+            <td>{{MIN}}</td>
+            <td>{{MAX}}</td>
+          </tr>
+        {{/size_stats}}
+
+    </table>
+ </div>
+{{/isCollection}}
+{{^isCollection}}
+	<div class="reportSection">
+	  <h4>Size</h4>
+	  <p class="large">The selected sketch is <strong>{{size_km}} square kilometers</strong>.</p>
+	</div>
+{{/isCollection}}
