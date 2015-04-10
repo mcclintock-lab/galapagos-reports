@@ -56,25 +56,46 @@ class TradeoffsTab extends ReportTab
       ch = d3.select(@$(chart_name))
       ch.datum(tradeoff_data)
         .call(thechart)
-
+      
       tooltip = d3.select("body")
         .append("div")
         .attr("class", "chart-tooltip")
         .attr("id", "chart-tooltip")
         .text("data")
 
+     
+      verticalRule = d3.select("body")
+          .append("div")
+          .attr("class", "verticalRule")
+          .style("position", "absolute")
+          .style("z-index", "19")
+          .style("width", "1px")
+          .style("height", "250px")
+          .style("top", "10px")
+          .style("bottom", "30px")
+          .style("left", "0px")
+          .style("background", "black");
+
       thechart.pointsSelect()
-        .on "mouseover", (d) -> return tooltip.style("visibility", "visible").html("<ul><strong>Proposal: "+window.app.sketches.get(d.PROPOSAL).attributes.name+"</strong><li>"+xlab+": "+d[mouseXProp]+"</li><li> "+ylab+": "+d[mouseYProp]+"</li></ul>")
+        .on "mouseover", (d) -> 
+
+          return tooltip.style("visibility", "visible").html("<ul><strong>Proposal: "+window.app.sketches.get(d.PROPOSAL).attributes.name+"</strong><li>"+xlab+": "+d[mouseXProp]+"</li><li> "+ylab+": "+d[mouseYProp]+"</li></ul>")
+        
       thechart.pointsSelect()
-        .on "mousemove", (d) -> return tooltip.style("top", (event.pageY-10)+"px").style("left",(calc_ttip(event.pageX, d, tooltip))+"px")
+
+        .on "mousemove", (d) -> 
+          return tooltip.style("top", (event.pageY-10)+"px").style("left",(calc_ttip(event.pageX, d, tooltip))+"px")
+      
       thechart.pointsSelect()
-        .on "mouseout", (d) -> return tooltip.style("visibility", "hidden")
+        .on "mouseout", (d) -> 
+          return tooltip.style("visibility", "hidden")
       thechart.labelsSelect()
         .on "mouseover", (d) -> return tooltip.style("visibility", "visible").html("<ul><strong>Proposal: "+window.app.sketches.get(d.PROPOSAL).attributes.name+"</strong><li> "+xlab+": "+d[mouseXProp]+"</li><li> "+ylab+": "+d[mouseYProp]+"</li></ul>")
       thechart.labelsSelect()
         .on "mousemove", (d) -> return tooltip.style("top", (event.pageY-10)+"px").style("left",(calc_ttip(event.pageX, d, tooltip))+"px")
       thechart.labelsSelect()
         .on "mouseout", (d) -> return tooltip.style("visibility", "hidden")
+
 
   renderTradeoffs: () =>
     name = @$('.chosen').val()
@@ -99,6 +120,8 @@ class TradeoffsTab extends ReportTab
     return xloc+10
 
 
+
+
   scatterplot: (chart_name, xval, yval) =>
     view = @
     width = 380
@@ -112,7 +135,7 @@ class TradeoffsTab extends ReportTab
     nyticks = 5
     yticks = null
     #rectcolor = d3.rgb(230, 230, 230)
-    rectcolor = "#dbe4ee"
+    rectcolor = "white"
     pointsize = 5 # default = no visible points at markers
     xlab = "X"
     ylab = "Y score"
@@ -122,6 +145,9 @@ class TradeoffsTab extends ReportTab
     pointsSelect = null
     labelsSelect = null
     legendSelect = null
+    verticalRule = null
+    horizontalRule = null
+
     if window.d3
       #clear out the old values
       view.$(chart_name).html('')
@@ -175,6 +201,7 @@ class TradeoffsTab extends ReportTab
         # if yticks not provided, use nyticks to choose pretty ones
         yticks = ys.ticks(nyticks) if !(yticks?)
         xticks = xs.ticks(nxticks) if !(xticks?)
+
 
         # x-axis
         xaxis = g.append("g").attr("class", "x axis")
@@ -317,12 +344,26 @@ class TradeoffsTab extends ReportTab
                .attr("fill", "none")
                .attr("stroke", "black")
                .attr("stroke-width", "none")
+                
+        '''
+        verticalRule = g.append("line")
+          .attr("x1", 0)
+          .attr("x2", width) 
+          .attr("y1", 0)
+          .attr("y2", height)
+          .attr("stroke", "black")
+          .attr("stroke-width", 1)
 
-
+        horizontalRule = g.append("line")
+          .attr("x1", 0)
+          .attr("x2", width) 
+          .attr("y1", 0)
+          .attr("y2", height)
+          .attr("stroke", "black")
+          .attr("stroke-width", 1)
+        '''
 
     ## configuration parameters
-
-
     chart.width = (value) ->
       return width if !arguments.length
       width = value
@@ -427,6 +468,12 @@ class TradeoffsTab extends ReportTab
 
     chart.legendSelect = () ->
       return legendSelect
+
+    chart.verticalRule = () ->
+      return verticalRule
+
+    chart.horizontalRule = () ->
+      return horizontalRule
 
     # return the chart function
     chart

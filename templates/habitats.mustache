@@ -1,0 +1,110 @@
+{{#isSketch}}
+<div class="reportSection tableContainer">
+    <h4>Habitats</h4>
+    <table>
+      <thead>
+        <tr>
+          <th>Habitat</th>
+          <th>Percent within Sketch</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#sketch_habitats}}
+          <tr>
+            <td>{{HAB_TYPE}}</td>
+            <td>{{PERC}}</td>
+          </tr>
+        {{/sketch_habitats}}
+        <tfoot>
+        <tr>
+          <td colspan="5" class="paragraph" style="text-align:left;">
+            <p style="margin-left:10px;">
+              
+            </p>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+ </div>
+{{/isSketch}}
+{{^isSketch}}
+<div class="reportSection tableContainer">
+    <h4>Habitats</h4>
+    {{#hasIntangibles}}
+     <div class="list-header">The intangible zones within this proposal include the following habitats:</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Habitat</th>
+          <th>Percent within Sketch</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#intangible_habitats}}
+          <tr>
+            <td>{{HAB_TYPE}}</td>
+            <td>{{PERC}}</td>
+          </tr>
+        {{/intangible_habitats}}
+    </table>
+    {{/hasIntangibles}}
+
+    {{#hasSustainable}}
+     <div class="list-header">The sustainable use zones within this proposal include the following habitats:</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Habitat</th>
+          <th>Percent within Sketch</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#sustainable_habitats}}
+          <tr>
+            <td>{{HAB_TYPE}}</td>
+            <td>{{PERC}}</td>
+          </tr>
+        {{/sustainable_habitats}}
+    </table>
+    {{/hasSustainable}}
+
+    {{#hasMixedUse}}
+     <div class="list-header">The mixed use zones within this proposal include the following habitats:</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Habitat</th>
+          <th>Percent within Sketch</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#mixed_use_habitats}}
+          <tr>
+            <td>{{HAB_TYPE}}</td>
+            <td>{{PERC}}</td>
+          </tr>
+        {{/mixed_use_habitats}}
+    </table>
+    {{/hasMixedUse}}
+
+
+    {{#hasExtractive}}
+     <div class="list-header">The extractive use zones within this proposal include the following habitats:</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Habitat</th>
+          <th>Percent within Sketch</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#extractive_habitats}}
+          <tr>
+            <td>{{HAB_TYPE}}</td>
+            <td>{{PERC}}</td>
+          </tr>
+        {{/extractive_habitats}}
+    </table>
+    {{/hasExtractive}}
+ </div>
+{{/isSketch}}

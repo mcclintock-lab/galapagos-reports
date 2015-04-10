@@ -492,3 +492,9 @@
   margin: 10px 0px 2px 2px;
   fill: black;
 }
+.list-header {
+  font-weight: bold;
+  margin-left: 10px;
+  margin-bottom: 5px;
+  margin-top: 10px;
+}
