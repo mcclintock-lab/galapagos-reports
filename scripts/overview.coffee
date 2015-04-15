@@ -18,13 +18,16 @@ class OverviewTab extends ReportTab
             }
 
     # create random data for visualization
-    size_stats = sketch_habitats = @recordSet('SizeStats', 'SizeStats').toArray()
+    size_stats = @recordSet('SizeStats', 'SizeStats').toArray()
+    console.log('size stats: ', size_stats)
     isCollection = @model.isCollection()
     size_km = 0
     if !isCollection
       size_km = size_stats[0].TOTAL
     else
       for stat in size_stats
+        console.log("zone type is ", stat.ZONE_TYPE)
+
         stat.ZONE_TYPE = names[stat.ZONE_TYPE]
     # setup context object with data and render the template from it
     context =
