@@ -11,23 +11,21 @@ class OverviewTab extends ReportTab
   ]
   render: () ->
     names = {
-              "mixed_use": "Mixed Use", 
-              "sustainable_use": "Sustainable Use", 
-              "non_extractive_use": 'Non Extractive Use', 
+              "mixed_use": "Transición", 
+              "sustainable_use": "Aprovechamiento Sustenable", 
+              "non_extractive_use": 'Conservación', 
               "intangible": 'Intangible'
             }
-
+    traslation = {MIXED_USE_ZONE: "Transición", SUSTAINABLE_ZONE: "Aprovechamiento Sustenable", INTANGIBLE_ZONE: "Intangible", EXTRACTIVE_ZONE: "Conservación"}
     # create random data for visualization
     size_stats = @recordSet('SizeStats', 'SizeStats').toArray()
-    console.log('size stats: ', size_stats)
+
     isCollection = @model.isCollection()
     size_km = 0
     if !isCollection
       size_km = size_stats[0].TOTAL
     else
       for stat in size_stats
-        console.log("zone type is ", stat.ZONE_TYPE)
-
         stat.ZONE_TYPE = names[stat.ZONE_TYPE]
     # setup context object with data and render the template from it
     context =

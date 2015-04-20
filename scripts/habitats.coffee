@@ -25,7 +25,7 @@ class HabitatsTab extends ReportTab
     SUSTAINABLE_ZONE = "sustainable_use"
     EXTRACTIVE_ZONE = "non_extractive_use"
     INTANGIBLE_ZONE = "intangible"
-
+    translation = {MIXED_USE_ZONE: "Transición", SUSTAINABLE_ZONE: "Aprovechamiento Sustenable", INTANGIBLE_ZONE: "Intangible", EXTRACTIVE_ZONE: "Conservación"}
     try
       isSketch = true
       sketch_habitats = sketch_habitats.toArray()

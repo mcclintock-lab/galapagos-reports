@@ -1,11 +1,11 @@
 {{#isSketch}}
 <div class="reportSection tableContainer">
-    <h4>Endemic Species</h4>
+    <h4>Especies Endémicas</h4>
     <table>
       <thead>
         <tr>
-          <th>Species Type</th>
-          <th>Percent within Sketch</th>
+          <th>Tipo de Especies</th>
+          <th>Porcentaje dentro de Propuesta</th>
         </tr>
       </thead>
       <tbody>
@@ -19,12 +19,12 @@
     </table>
  </div>
  <div class="reportSection tableContainer">
-    <h4>Habitats</h4>
+    <h4>Hábitats</h4>
     <table>
       <thead>
         <tr>
-          <th>Habitat</th>
-          <th>Percent within Sketch</th>
+          <th>Hábitat</th>
+          <th>Porcentaje dentro de Propuesta</th>
         </tr>
       </thead>
       <tbody>
@@ -42,12 +42,12 @@
 {{^isSketch}}
   {{#hasIntangibleSpecies}}
     <div class="reportSection tableContainer">
-      <h4>Endemic Species in Intangible Zones</h4>
+      <h4>Especies Endémicas en Zonas Intangibles</h4>
         <table>
         <thead>
           <tr>
-            <th>Species Type</th>
-            <th>Percent within Proposal</th>
+            <th>Tipo de Especies</th>
+            <th>Porcentaje dentro de Propuesta</th>
           </tr>
         </thead>
         <tbody>
@@ -63,20 +63,20 @@
   {{/hasIntangibleSpecies}}
   {{^hasIntangibleSpecies}}
     <div class="reportSection">
-      <h4>Endemic Species in Intangible Zones</h4>
-      <p class="large">There are no intangible zones in this collection</p>
+      <h4>Especies Endémicas en Zonas Intangibles</h4>
+      <p class="large">No hay zonas intangibles en esta propuesta.</p>
     </div>
   {{/hasIntangibleSpecies}}
 
   <div class="reportSection tableContainer">
-    <h4>Habitats</h4>
+    <h4>Hábitats</h4>
     {{#hasIntangibles}}
-     <div class="list-header">The intangible zones within this proposal include the following habitats:</div>
+     <div class="list-header">Las zonas de Intangible dentro de esta propuesta incluyen los siguientes hábitats:</div>
     <table>
       <thead>
         <tr>
-          <th>Habitat</th>
-          <th>Percent within Proposal</th>
+          <th>Hábitat</th>
+          <th>Porcentaje dentro de Propuesta</th>
         </tr>
       </thead>
       <tbody>
@@ -90,12 +90,12 @@
     {{/hasIntangibles}}
 
     {{#hasSustainable}}
-     <div class="list-header">The sustainable use zones within this proposal include the following habitats:</div>
+     <div class="list-header">Las zonas de Aprovechamiento Sustenable dentro de esta propuesta incluyen los siguientes hábitats:</div>
     <table>
       <thead>
         <tr>
-          <th>Habitat</th>
-          <th>Percent within Proposal</th>
+          <th>Hábitat</th>
+          <th>Porcentaje dentro de Propuesta</th>
         </tr>
       </thead>
       <tbody>
@@ -109,12 +109,12 @@
     {{/hasSustainable}}
 
     {{#hasMixedUse}}
-     <div class="list-header">The mixed use zones within this proposal include the following habitats:</div>
+     <div class="list-header">Las zonas de Transición dentro de esta propuesta incluyen los siguientes hábitats:</div>
     <table>
       <thead>
         <tr>
-          <th>Habitat</th>
-          <th>Percent within Proposal</th>
+          <th>Hábitat</th>
+          <th>Porcentaje dentro de Propuesta</th>
         </tr>
       </thead>
       <tbody>
@@ -129,12 +129,12 @@
 
 
     {{#hasExtractive}}
-     <div class="list-header">The extractive use zones within this proposal include the following habitats:</div>
+     <div class="list-header">Las zonas de Conservación dentro de esta propuesta incluyen los siguientes hábitats:</div>
     <table>
       <thead>
         <tr>
-          <th>Habitat</th>
-          <th>Percent within Proposal</th>
+          <th>Hábitat</th>
+          <th>Porcentaje dentro de Propuesta</th>
         </tr>
       </thead>
       <tbody>

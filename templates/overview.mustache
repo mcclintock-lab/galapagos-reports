@@ -1,14 +1,14 @@
 {{#isCollection}}
 <div class="reportSection tableContainer">
-    <h4>Size (in square kilometers)</h4>
+    <h4>Tamaño (en kilómetros cuadrados)</h4>
     <table>
       <thead>
         <tr>
-          <th>Zone Type</th>
-          <th>Total Area</th>
-          <th>Mean Area</th>
-          <th>Min. Area</th>
-          <th>Max. Area</th>
+          <th>Tipo de Zona</th>
+          <th>Área Total</th>
+          <th>Área Promedio</th>
+          <th>Área Min.</th>
+          <th>Área Max</th>
         </tr>
       </thead>
       <tbody>
@@ -21,13 +21,12 @@
             <td>{{MAX}}</td>
           </tr>
         {{/size_stats}}
-
     </table>
  </div>
 {{/isCollection}}
 {{^isCollection}}
 	<div class="reportSection">
 	  <h4>Size</h4>
-	  <p class="large">The selected sketch is <strong>{{size_km}} square kilometers</strong>.</p>
+	  <p class="large">El área seleccionada se encuentra a <strong>{{size_km}} kilómetros cuadrados</strong>.</p>
 	</div>
 {{/isCollection}}

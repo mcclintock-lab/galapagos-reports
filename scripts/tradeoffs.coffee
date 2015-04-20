@@ -16,7 +16,7 @@ class TradeoffsTab extends ReportTab
 
   render: () ->
     tradeoff_data = @recordSet('GalapagosTradeoffAnalysis', 'Scores').toArray()
-    tradeoffs = ['Preservation and Tourism', 'Preservation and Extractive', 'Tourism and Extractive']
+    tradeoffs = ['Conservación y Turismo', 'Conservación y Pesca', 'Turismo y Pesca']
     console.log("data: ", tradeoff_data)
     context =
       sketch: @model.forTemplate()
@@ -30,9 +30,9 @@ class TradeoffsTab extends ReportTab
       _.defer @renderTradeoffs
 
     if window.d3
-      @setupScatterPlot(tradeoff_data, '.pres-v-tourism', "Preservation Value", "Tourism Value", "Preservation", "Tourism")
-      @setupScatterPlot tradeoff_data, '.pres-v-extractive', "Preservation Value", "Extractive Value", "Preservation", "Extractive"
-      @setupScatterPlot tradeoff_data, '.tourism-v-extractive', "Tourism Value", "Extractive Value", "Tourism", "Extractive"
+      @setupScatterPlot(tradeoff_data, '.pres-v-tourism', "Valor de Conservación", "Valor de Turismo", "Preservation", "Tourism")
+      @setupScatterPlot tradeoff_data, '.pres-v-extractive', "Valor de Conservación", "Valor de Pesca", "Preservation", "Extractive"
+      @setupScatterPlot tradeoff_data, '.tourism-v-extractive', "Valor de Turismo", "Valor de Pesca", "Tourism", "Extractive"
 
 
   setupScatterPlot: (tradeoff_data, chart_name, xlab, ylab, mouseXProp, mouseYProp) =>
@@ -79,7 +79,7 @@ class TradeoffsTab extends ReportTab
       thechart.pointsSelect()
         .on "mouseover", (d) -> 
 
-          return tooltip.style("visibility", "visible").html("<ul><strong>Proposal: "+window.app.sketches.get(d.PROPOSAL).attributes.name+"</strong><li>"+xlab+": "+d[mouseXProp]+"</li><li> "+ylab+": "+d[mouseYProp]+"</li></ul>")
+          return tooltip.style("visibility", "visible").html("<ul><strong>Propuesta: "+window.app.sketches.get(d.PROPOSAL).attributes.name+"</strong><li>"+xlab+": "+d[mouseXProp]+"</li><li> "+ylab+": "+d[mouseYProp]+"</li></ul>")
         
       thechart.pointsSelect()
 
@@ -90,7 +90,7 @@ class TradeoffsTab extends ReportTab
         .on "mouseout", (d) -> 
           return tooltip.style("visibility", "hidden")
       thechart.labelsSelect()
-        .on "mouseover", (d) -> return tooltip.style("visibility", "visible").html("<ul><strong>Proposal: "+window.app.sketches.get(d.PROPOSAL).attributes.name+"</strong><li> "+xlab+": "+d[mouseXProp]+"</li><li> "+ylab+": "+d[mouseYProp]+"</li></ul>")
+        .on "mouseover", (d) -> return tooltip.style("visibility", "visible").html("<ul><strong>Propuesta: "+window.app.sketches.get(d.PROPOSAL).attributes.name+"</strong><li> "+xlab+": "+d[mouseXProp]+"</li><li> "+ylab+": "+d[mouseYProp]+"</li></ul>")
       thechart.labelsSelect()
         .on "mousemove", (d) -> return tooltip.style("top", (event.pageY-10)+"px").style("left",(calc_ttip(event.pageX, d, tooltip))+"px")
       thechart.labelsSelect()
@@ -99,11 +99,11 @@ class TradeoffsTab extends ReportTab
 
   renderTradeoffs: () =>
     name = @$('.chosen').val()
-    if name == "Preservation and Tourism"
+    if name == "Conservación y Turismo"
       @$('.pvt_container').show()
       @$('.pve_container').hide()
       @$('.tve_container').hide()
-    else if name == "Preservation and Extractive"
+    else if name == "Conservación y Pesca"
       @$('.pvt_container').hide()
       @$('.pve_container').show()
       @$('.tve_container').hide()
