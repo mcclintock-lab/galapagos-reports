@@ -17,8 +17,15 @@ class OverviewTab extends ReportTab
               "intangible": 'Intangible'
             }
     traslation = {MIXED_USE_ZONE: "Transición", SUSTAINABLE_ZONE: "Aprovechamiento Sustenable", INTANGIBLE_ZONE: "Intangible", EXTRACTIVE_ZONE: "Conservación"}
+    
     # create random data for visualization
     size_stats = @recordSet('SizeStats', 'SizeStats').toArray()
+    lobster = @recordSet('SizeStats', 'Lobster').toArray()
+
+    if lobster?.length > 0
+      lobster_perc = lobster[0].PERC
+    else
+      lobster_perc = 0.0
 
     isCollection = @model.isCollection()
     size_km = 0
@@ -27,6 +34,7 @@ class OverviewTab extends ReportTab
     else
       for stat in size_stats
         stat.ZONE_TYPE = names[stat.ZONE_TYPE]
+
     # setup context object with data and render the template from it
     context =
       sketch: @model.forTemplate()
@@ -36,6 +44,7 @@ class OverviewTab extends ReportTab
       isCollection: isCollection
       size_stats: size_stats
       size_km: size_km
+      lobster_perc: lobster_perc
     
     @$el.html @template.render(context, templates)
 

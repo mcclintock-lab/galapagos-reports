@@ -23,10 +23,18 @@
         {{/size_stats}}
     </table>
  </div>
+   <div class="reportSection">
+    <h4>Lobster Catch</h4>
+    <p class="large">The selected proposal contains <strong>{{lobster_perc}}%</strong> of 2008 the Galapagos lobster catch (by weight).</p>
+  </div>
 {{/isCollection}}
 {{^isCollection}}
 	<div class="reportSection">
 	  <h4>Size</h4>
 	  <p class="large">El área seleccionada se encuentra a <strong>{{size_km}} kilómetros cuadrados</strong>.</p>
 	</div>
+  <div class="reportSection">
+    <h4>Lobster Catch</h4>
+    <p class="large">The selected sketch contains <strong>{{lobster_perc}}%</strong> of the 2008 Galapagos lobster catch (by weight).</p>
+  </div>
 {{/isCollection}}
